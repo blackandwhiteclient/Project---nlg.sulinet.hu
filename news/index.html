@@ -1,0 +1,171 @@
+---
+title: News
+---
+<head>
+    <!-- Animate -->
+
+        <link rel="stylesheet" href="css/animate.css">
+
+        <!-- Icomoon Icon Fonts-->
+
+        <link rel="stylesheet" href="css/icomoon.css">
+
+        <!-- Bootstrap design -->
+
+        <link rel="stylesheet" href="css/bootstrap.css">
+
+
+        <!-- Magnific Popup -->
+
+        <link rel="stylesheet" href="css/magnific-popup.css">
+
+        <!-- Owl Carousel  -->
+
+        <link rel="stylesheet" href="css/owl.carousel.min.css">
+
+        <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+        <!-- Flexslider  -->
+
+        <link rel="stylesheet" href="css/flexslider.css">
+
+        <!-- style  -->
+
+        <link rel="stylesheet" href="css/style.css">
+
+        <!-- Modernizr JS -->
+
+        <script src="js/modernizr-2.6.2.min.js"></script>
+
+        </head>
+
+        <body>              
+
+        <div class="fh5co-loader"></div>
+            
+                    <div id="page">
+
+        <nav class="fh5co-nav" role="navigation">
+
+                <div class="top-menu">
+
+                        <div class="container">
+
+                                <div class="row">
+
+                                        <div class="col-xs-2">
+
+                                                <div id="fh5co-logo"><a href="http://www.blackandwhite.ml/index">BlackAndWhite<span>.</span></a></div>
+
+                                        </div>
+
+                                        <div class="col-xs-10 text-right menu-1">
+
+                                                <ul>
+
+                                                        <li class="active"><a href="http://www.blackandwhite.ml/index">Home</a></li>
+
+                                                        <li class="has-dropdown">
+
+                                                                <a href="#">Downloads</a>
+
+                                                                <ul class="dropdown">
+
+                                                                        <li><a href="http://www.blackandwhite.ml/alphadownload">-Alpha-</a></li>
+
+                                                                        <li><a href="#">Coming Soon!</a></li>
+
+                                                                </ul>
+
+                                                        </li>
+
+                                                        <li><a href="http://www.blackandwhite.ml/changelogs">Changelogs</a></li>                                                    
+
+                                                         <li><a href="about.html">Yoshi client</a></li>
+
+                                                        <li class="btn-cta"><a href="https://github.com/blackandwhiteclient/"><span>Github</span></a></li>
+
+                                                </ul>
+
+                                        </div>
+
+                                </div>
+                            
+                        </div>
+
+                </div>
+
+        </nav
+      <hr>      
+
+{% for post in paginator.posts %}
+        <article class="container">
+
+                {% include post-header.html %}
+
+                <p class="align-center">
+
+      <div class="padding10 shadow">
+
+                                <a href="{{ post.url }}">
+
+          <img src="{% if post.image %}{{ post.image }}{% elsif post.video %}https://i.ytimg.com/vi/{{ post.video }}/maxresdefault.jpg{% endif %}" alt="{{ post.title }}">
+
+                                </a>
+
+                        </div>
+
+                
+                {{ post.excerpt | replace: ":new", "<img class='emoji' src='https://assets.github.com/images/icons/emoji/new.png' height='20' width='20' align='absmiddle'>:" | replace: ":star", "<img class='emoji' src='https://assets.github.com/images/icons/emoji/star.png' height='20' width='20' align='absmiddle'>:" | replace: ":bug", "<img class='emoji' src='https://assets.github.com/images/icons/emoji/bug.png' height='20' width='20' align='absmiddle'>:" | replace: ":rocket", "<img class='emoji' src='https://assets.github.com/images/icons/emoji/rocket.png' height='20' width='20' align='absmiddle'>:" | replace: ":gem", "<img class='emoji' src='https://assets.github.com/images/icons/emoji/gem.png' height='20' width='20' align='absmiddle'>:" | replace: "::", "" }}
+
+                <footer>
+
+                        <p>
+
+                    <a href="{{ post.url }}" class="btn btn-primary btn-lg">
+
+                      Read More
+
+                    </a>
+
+                        </p>
+
+                </footer>
+
+        </article>
+                        
+        <hr>
+
+{% endfor %}
+
+<div class="container">
+
+        <nav class="grid">
+
+                {% if paginator.previous_page %}
+
+                        <a class="button place-left" href="{{ paginator.previous_page_path | remove: "index.html" }}">
+
+                                <span class="mif-chevron-thin-left"></span>
+
+                                Newer News
+
+                        </a>
+
+                {% endif %}
+
+                {% if paginator.next_page %}
+
+                        <a class="button place-right" href="{{ paginator.next_page_path }}">
+
+                                Older News
+
+                                <span class="mif-chevron-thin-right"></span>
+
+                        </a>
+
+                {% endif %}
+
+        </nav>
+
+</div>
